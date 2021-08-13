@@ -1,11 +1,9 @@
 {
-  "expo": {
-    "name": "ProjectP",
-    "slug": "ProjectP",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  },
-  "name": "ProjectP"
+	"expo": {
+		"name": "ProjectP",
+		"slug": "ProjectP",
+		"version": "1.0.0",
+		"assetBundlePatterns": ["**/*"]
+	},
+	"name": "ProjectP"
 }
