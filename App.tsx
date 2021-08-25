@@ -6,7 +6,7 @@ import {HelloWorld, ListTest, Test} from './src';
 
 const App = () => {
 	return (
-		<HelloWorld />
+		<ListTest />
 	);
 };
 
