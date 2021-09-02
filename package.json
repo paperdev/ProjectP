@@ -1,5 +1,6 @@
 {
 	"main": "node_modules/expo/AppEntry.js",
+	"type": "module",
 	"scripts": {
 		"start": "expo start",
 		"android": "expo start --android",
@@ -7,14 +8,20 @@
 		"web": "expo start --web",
 		"eject": "expo eject",
 		"lint": "eslint . --fix --ext .ts,.tsx",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"tsc": "tsc",
+		"server": "node ./dist/main.js "
 	},
 	"dependencies": {
 		"@react-native-community/eslint-config": "^3.0.0",
+		"@types/cors": "^2.8.12",
+		"@types/express": "^4.17.13",
+		"cors": "^2.8.5",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^3.4.0",
 		"expo": "~42.0.1",
 		"expo-status-bar": "~1.0.4",
+		"express": "^4.17.1",
 		"prettier": "^2.3.2",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
@@ -30,7 +37,7 @@
 		"eslint": "^7.32.0",
 		"eslint-plugin-react": "^7.24.0",
 		"eslint-plugin-react-native": "^3.11.0",
-		"typescript": "~4.0.0"
+		"typescript": "^4.0.8"
 	},
 	"private": true
 }

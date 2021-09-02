@@ -1,20 +1,8 @@
 /** @format */
 
-import React from 'react';
-import {ScrollView, View, Image, StyleSheet, Text} from 'react-native';
-
-const ListTest = () => {
-	const data: Item[] = initItemData();
-	return (
-		<ScrollView>
-			{
-				data.map((item, index) => {
-					return <RenderItem item={item} key={index}></RenderItem>
-				})			
-			}
-		</ScrollView>
-	)
-};
+import React, {useState, useEffect} from 'react';
+import {ScrollView, View, Image, StyleSheet, Text, ActivityIndicator} from 'react-native';
+import {RequestHelper} from './utils';
 
 interface Item {
 	id: number;
@@ -24,25 +12,55 @@ interface Item {
 	content: string;
 }
 
-const initItemData = () => {
-	const list: Item[] = [];
-	for (let i = 0; i < 100; i++) {
-		list.push({
-			id: i,
-			name: 'name_' + i,
-			img: 'img_' + i,
-			time: 'time_' + i,
-			content: 'content_' + i,
-		});
+const ListTest = () => {
+	const [isLoading, setLoading] = useState(true);
+	const [data, setData] = useState([] as Item[]);
+
+	const initItemData = async () => {
+		try {
+			await RequestHelper();
+			const list: Item[] = [];
+			for (let i = 0; i < 100; i++) {
+				list.push({
+					id: i,
+					name: 'name_' + i,
+					img: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+					time: 'time_' + i,
+					content: 'content_' + i,
+				});
+			}
+			setData(list);
+		} catch (error) {
+			console.error(error);
+		} finally {
+			setLoading(false);
+		}
 	}
-	return list;
-}
+
+	useEffect(() => {
+		initItemData();
+	}, []);
+
+	return (
+		<ScrollView>
+			{
+				isLoading 
+					? <ActivityIndicator/> 
+					: (
+						data.map((item, index) => {
+							return <RenderItem item={item} key={index}></RenderItem>
+						})	
+					)
+			}
+		</ScrollView>
+	)
+};
 
 const RenderItem = (props: {item: Item}) => {
 	return (
 		<View>
 			<View style={styles.container}>
-				<Image source={props.item.img} style={styles.headerImg} />
+				<Image source={{uri: props.item.img}} style={styles.headerImg} />
 				<View style={styles.contentView}>
 					<View style={styles.topView}>
 						<Text style={styles.titleText}>{props.item.name}</Text>
