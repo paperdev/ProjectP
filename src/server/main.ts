@@ -3,6 +3,8 @@ import http from 'http';
 import cluster from 'cluster';
 import os from 'os';
 
+import * as puppeteer from 'puppeteer';
+
 import CONFIG from './config';
 import router from './routes';
 import {LogHandler, ErrorHandler} from '../utils';
@@ -31,7 +33,7 @@ main_server.on('listening', (error: Error) => {
     if (error) {
         return console.error('Server start failed.\n' + error);
     }
-    console.log('Server running info : ' + JSON.stringify(main_server.address()));
+    console.log('Server is running. Info : ' + JSON.stringify(main_server.address()));
 });
 
 main_server.on('errorHandler', (error) => {

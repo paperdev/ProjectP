@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import url from 'url';
 import { Express } from 'express';
+import { Systrace } from 'react-native';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const __filename = path.basename(new URL(import.meta.url).pathname);
@@ -17,9 +18,10 @@ export default async function(app: Express) {
             continue;
         }
         const api = file.substring(__dirname.length, file.length - JS_EXT.length);
-        console.log(api.replace(/\\/g, '/'));
+        const uri = api.replace(/\\/g, '/');
         const module = await import(url.pathToFileURL(file.toString()).toString());
-        app.use(api.replace(/\\/g, '/'), module.default);
+        app.use(uri, module.default);
+        console.log(uri + ' is ready.');
     }
 }
 
