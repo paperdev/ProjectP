@@ -14,6 +14,8 @@
 	},
 	"dependencies": {
 		"@react-native-community/eslint-config": "^3.0.0",
+		"@react-navigation/bottom-tabs": "^6.0.9",
+		"@react-navigation/native": "^6.0.6",
 		"@types/axios": "^0.14.0",
 		"@types/cheerio": "^0.22.30",
 		"@types/cors": "^2.8.12",

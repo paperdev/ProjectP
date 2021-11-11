@@ -2,7 +2,7 @@
 
 import React, {useState, useEffect} from 'react';
 import {ScrollView, View, Image, StyleSheet, Text, ActivityIndicator} from 'react-native';
-import {RequestHelper} from './utils';
+import {RequestHelper} from '../../utils'
 
 interface Item {
 	id: number;

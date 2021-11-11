@@ -1,12 +1,12 @@
 /** @format */
 
 import React from 'react';
-import {View} from 'react-native';
-import {HelloWorld, ListTest, Test} from './src';
+import Index from './src/components/Index';
+
 
 const App = () => {
 	return (
-		<ListTest />
+		<Index/>
 	);
 };
 
