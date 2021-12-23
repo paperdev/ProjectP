@@ -15,6 +15,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 const Tab = createBottomTabNavigator();
 
 import Main from './home/Main';
+import ContentList from './home/ContentList';
 
 const Index = () => {
 	const [mainSelectedTab, setMainSelectedTab] = React.useState('Main');
@@ -24,7 +25,7 @@ const Index = () => {
 		<NavigationContainer>
 			<Tab.Navigator>
 				<Tab.Screen name="Home" component={Main} />
-				<Tab.Screen name="Settings" component={Main} />
+				<Tab.Screen name="Settings" component={ContentList} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
